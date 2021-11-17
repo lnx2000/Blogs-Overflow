@@ -1,0 +1,25 @@
+.searchbar{
+    height: 35px;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    border-color: rgb(184, 25, 25);
+}
+.SearchBarContainer{
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.submit{
+    width: 100px;
+    background-color: rgb(184, 25, 25);
+    color: white;
+    border:none;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 9px 32px;
+    border-radius: 10px;
+}
