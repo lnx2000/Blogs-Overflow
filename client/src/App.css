@@ -8,6 +8,7 @@
   content: "";
   display: table;
   clear: both;
+  width: 100%;
   padding: 0px 0px 0px 0px;
 }
 .LeftPane{

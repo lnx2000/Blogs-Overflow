@@ -11,16 +11,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/add', function(req, res){
-
   const newPost = new Post({author: req.body.author, 
                             authorInfo: req.body.authorInfo, 
                             title: req.body.title, 
                             description: req.body.description});
   
   newPost.save()
-  .then(()=> res.redirect('/'))
+  .then(_res => res.send(_res))
   .catch(err => res.status(400).json(`Error: ${err}`));
-
 })
 
 module.exports = router;

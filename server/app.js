@@ -2,6 +2,8 @@ var express = require('express');
 var cors = require('cors');
 const mongoose = require('mongoose');
 const postRoutes = require("./routes/posts")
+const parser = require('body-parser');
+const urlencodedParser = parser.urlencoded({extended : false});
 require('dotenv').config();
 
 const app = express();
@@ -16,8 +18,8 @@ connection.once('open', ()=>{
 });
 
 app.use(cors());
-app.use(express.json());
-
+app.use(parser.json());
+app.use(urlencodedParser)
 
 app.get('/', (req, res) =>{
   res.redirect("/posts");

@@ -1,6 +1,4 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import './SearchBar.css'
 
 
@@ -16,8 +14,7 @@ class SearchBar extends React.Component{
 
     }
     handleChange(searchQuery){
-        this.state.searchString = searchQuery;
-        console.log(this.state.searchString);
+        this.setState({searchString : searchQuery});
     }
     render(){
         return(
