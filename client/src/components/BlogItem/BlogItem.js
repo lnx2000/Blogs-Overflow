@@ -7,10 +7,7 @@ import downvote from "../../vecs/downvote.svg";
 
 
 class BlogItem extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
+    
     callAPI(){
     }
     componentWillMount(){

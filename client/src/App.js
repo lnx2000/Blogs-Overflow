@@ -11,13 +11,13 @@ import InputForm  from './components/InputForm/InputForm';
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = { posts:[] };
+    this.state = { posts:[], filtered_posts:[]};
   }
 
   callAPI(){
     fetch("http://localhost:5000/posts")
     .then(res => res.json())
-    .then(res =>this.setState({posts : res}
+    .then(res =>this.setState({posts : res, filtered_posts:res}
     ))
 
   }
@@ -40,8 +40,22 @@ class App extends React.Component {
         });
   }
 
-  render(){
+  onQuery = (queryString) => {
+    var _filtered_posts = []
     var posts = this.state.posts;
+    if(queryString === ""){
+      this.setState({filtered_posts: posts});
+    }
+    else{
+      for(let i=0;i<posts.length;i++){
+        if(posts[i].title.toLowerCase().includes(queryString.toLowerCase()))
+          _filtered_posts.push(posts[i]);
+      }
+      this.setState({filtered_posts : _filtered_posts});
+    }
+  }
+  render(){
+    var posts = this.state.filtered_posts;
     var posts1 = [], posts2 = [];
       for(let i=0;i<posts.length;i++){
         if(i%2 === 0){
@@ -54,7 +68,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="TopBar"/>
-        <SearchBar/>
+        <SearchBar onQuery={this.onQuery}/>
+        <NoData>/
+        <a href='https://www.freepik.com/vectors/box'>Box vector created by brgfx - www.freepik.com</a>
         <div className="SplitScreen">
           <div className="LeftPane">
             <ul className="list1">
@@ -71,7 +87,6 @@ class App extends React.Component {
                 posts2.map((post, index) =>(
                   <BlogItem author={post.author} authorInfo={post.authorInfo} title={post.title} description={post.description} created={post.created}/>
                 ))
-
                 }
             </ul>
           </div>
