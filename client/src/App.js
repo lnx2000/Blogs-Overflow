@@ -6,6 +6,7 @@ import insta from "./vecs/instagram.svg";
 import linkedin from "./vecs/linkedin.svg";
 import SearchBar from "./components/SearchBar/SearchBar"
 import InputForm  from './components/InputForm/InputForm';
+import NoData from "./components/NoData/NoData"
 
 
 class App extends React.Component {
@@ -54,23 +55,23 @@ class App extends React.Component {
       this.setState({filtered_posts : _filtered_posts});
     }
   }
-  render(){
-    var posts = this.state.filtered_posts;
-    var posts1 = [], posts2 = [];
-      for(let i=0;i<posts.length;i++){
-        if(i%2 === 0){
-          posts1.push(posts[i]);
-        }
-        else{
-          posts2.push(posts[i]);
-        }
-      }
-    return (
-      <div className="App">
-        <div className="TopBar"/>
-        <SearchBar onQuery={this.onQuery}/>
-        <NoData>/
-        <a href='https://www.freepik.com/vectors/box'>Box vector created by brgfx - www.freepik.com</a>
+  conditionalRendering = () =>{
+    if(this.state.filtered_posts.length == 0)
+      return <NoData/>
+    else 
+    {
+      var posts = this.state.filtered_posts;
+        var posts1 = [], posts2 = [];
+          for(let i=0;i<posts.length;i++){
+            if(i%2 === 0){
+              posts1.push(posts[i]);
+            }
+            else{
+              posts2.push(posts[i]);
+            }
+          }
+      return(
+        
         <div className="SplitScreen">
           <div className="LeftPane">
             <ul className="list1">
@@ -91,6 +92,15 @@ class App extends React.Component {
             </ul>
           </div>
         </div>
+      )
+    }
+  }
+  render(){
+    return (
+      <div className="App">
+        <div className="TopBar"/>
+        <SearchBar onQuery={this.onQuery}/>
+        <this.conditionalRendering/>
         <InputForm onSubmit = {this.onSubmitFrom}/>
         <div className="BottomBar">
           <div className="links">
@@ -103,6 +113,4 @@ class App extends React.Component {
     );
   }
 }
-
-////this.state.posts.map((post) => <BlogItem author={post.author} authorInfo={post.authorInfo} title={post.title} description={post.description}/>)
 export default App;
