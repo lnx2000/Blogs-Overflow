@@ -20,5 +20,16 @@ router.post('/add', function(req, res){
   .then(_res => res.send(_res))
   .catch(err => res.status(400).json(`Error: ${err}`));
 })
+router.put('/update', function(req, res){
+    var id = req.query.id;
+    var upvotes = req.body.upvotes;
+    var downvotes = req.body.downvotes;
+
+    Post.updateOne({_id : id}, {upvotes : upvotes, downvotes : downvotes}, function(err, _res){
+      if(err)
+        res.send("Error occured :(");
+      else res.status(200).send("Success");
+    })
+})
 
 module.exports = router;

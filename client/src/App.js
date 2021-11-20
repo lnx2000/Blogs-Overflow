@@ -55,6 +55,18 @@ class App extends React.Component {
       this.setState({filtered_posts : _filtered_posts});
     }
   }
+  OnUpdatePost = (changes, id) =>{
+    console.log(changes);
+    console.log(id);
+    fetch(`http://localhost:5000/posts/update?id=${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(changes),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then((response) =>{});
+  }
   conditionalRendering = () =>{
     if(this.state.filtered_posts.length == 0)
       return <NoData/>
@@ -77,7 +89,15 @@ class App extends React.Component {
             <ul className="list1">
               {
                 posts1.map((post, index) =>(
-                  <BlogItem author={post.author} authorInfo={post.authorInfo} title={post.title} description={post.description} created={post.created}/>
+                  <BlogItem author={post.author}
+                   authorInfo={post.authorInfo}
+                   title={post.title} 
+                   description={post.description} 
+                   created={post.created} 
+                   id={post._id} 
+                   update={this.OnUpdatePost}
+                   upvotecount={post.upvotes}
+                   downvotecount={post.downvotes}/>
                 ))
               }
             </ul>
@@ -86,7 +106,15 @@ class App extends React.Component {
             <ul className="list2"> 
               {
                 posts2.map((post, index) =>(
-                  <BlogItem author={post.author} authorInfo={post.authorInfo} title={post.title} description={post.description} created={post.created}/>
+                  <BlogItem author={post.author} 
+                  authorInfo={post.authorInfo}
+                  title={post.title} 
+                  description={post.description} 
+                  created={post.created} 
+                  id={post._id} 
+                  update={this.OnUpdatePost}
+                  upvotecount={post.upvotes}
+                  downvotecount={post.downvotes}/>
                 ))
                 }
             </ul>
