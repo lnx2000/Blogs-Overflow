@@ -34,7 +34,7 @@ class App extends React.Component {
             }
         }).then((response) => {
             if (response.status >= 200 && response.status < 300) {
-              
+                window.location.reload();
             } else {
                 alert("Error occured :(");
             }

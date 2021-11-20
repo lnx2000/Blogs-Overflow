@@ -30,8 +30,8 @@ class InputForm extends React.Component{
         console.log("Called this");
         e.preventDefault();
         const post = {
-            author : this.state.author,
-            authorInfo : this.state.authorInfo,
+            author : this.state.author.substring(0, 20),
+            authorInfo : this.state.authorInfo.substring(0, 20),
             title : this.state.title,
             description : this.state.description
         }
@@ -43,10 +43,10 @@ class InputForm extends React.Component{
                 <form id="contact" action="" method="post" onSubmit={(e) => this.onSubmit(e)}>
                     <h4>Post a Blog</h4>
                     <fieldset>
-                        <input placeholder="Name" type="text" tabIndex="1" required autoFocus onChange={(e) => {this.onTextChange(e)}} id="author"/>
+                        <input placeholder="Name(max 20 chars)" type="text" tabIndex="1" required autoFocus onChange={(e) => {this.onTextChange(e)}} id="author"/>
                     </fieldset>
                     <fieldset>
-                        <input placeholder="Position" type="text" tabIndex="2" required onChange={(e) => {this.onTextChange(e)}} id="authorInfo"/>
+                        <input placeholder="Info(max 20 chars)" type="text" tabIndex="2" required onChange={(e) => {this.onTextChange(e)}} id="authorInfo"/>
                     </fieldset>
                     <fieldset>
                         <input placeholder="Blog Title" type="text" tabIndex="3" required onChange={(e) => {this.onTextChange(e)}} id="title"/>

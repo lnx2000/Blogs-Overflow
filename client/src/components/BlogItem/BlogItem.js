@@ -78,7 +78,7 @@ class BlogItem extends React.Component{
                     <Card style={{borderRadius:7}}>
                         <div className="TopLine"></div>
                         <div className="TopInfo">
-                            <p className="BlogPosted">{"Posted: " + this.props.created}</p>
+                            <p className="BlogPosted">{"Posted: " + this.props.created.substring(0, 10)}</p>
                             <div className="clicks">
                                 <img src={this.state.upsrc} width="22" alt=".upvote" style={{marginLeft: 10, marginRight:5}} id="uvote" onClick={(e) => this.onImageClick(e)}/>
                                 <img src={this.state.downsrc} width="22" alt=".downvote" style={{marginLeft: 5, marginRight:5}} id="dvote" onClick={(e) => this.onImageClick(e)}/>
