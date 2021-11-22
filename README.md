@@ -10,3 +10,4 @@ A tech-blog web app with functionalities such as upvote, downvote and comments.
 - [ ] Login/Authnetication
 - [ ] MD support
 - [ ] Images support
+- [ ] Hosting
