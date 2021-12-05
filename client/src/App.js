@@ -6,18 +6,32 @@ import insta from "./vecs/instagram.svg";
 import linkedin from "./vecs/linkedin.svg";
 import SearchBar from "./components/SearchBar/SearchBar"
 import InputForm  from './components/InputForm/InputForm';
+import LoginSignupForm  from './components/LoginSignupForm/LoginSignupForm';
 import NoData from "./components/NoData/NoData"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink
+} from 'react-router-dom';
 
 
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = { posts:[], filtered_posts:[]};
+    this.state = { posts:[], filtered_posts:[], verified : false};
   }
 
   callAPI(){
     fetch("http://localhost:5000/posts")
-    .then(res => res.json())
+    .then(res => {
+      if(!res.ok){
+        this.setState({verified : false});
+      }else {
+        this.setState({verified : true});
+        return res.json();
+      }
+    })
     .then(res =>this.setState({posts : res, filtered_posts:res}
     ))
 
@@ -125,19 +139,20 @@ class App extends React.Component {
   }
   render(){
     return (
-      <div className="App">
-        <div className="TopBar"/>
-        <SearchBar onQuery={this.onQuery}/>
-        <this.conditionalRendering/>
-        <InputForm onSubmit = {this.onSubmitFrom}/>
-        <div className="BottomBar">
-          <div className="links">
-              <img src={github} width="25" alt=".github" style={{marginLeft: 10, marginRight:10}}/>
-              <img src={insta} width="25" alt=".instagram"style={{marginLeft: 10, marginRight:10}}/>
-              <img src={linkedin} width="25" alt=".linkedin" style={{marginLeft: 10, marginRight:10}}/>
-          </div>
-        </div>
-      </div>
+      // <div className="App">
+      //   <div className="TopBar"/>
+      //   <SearchBar onQuery={this.onQuery}/>
+      //   <this.conditionalRendering/>
+      //   <InputForm onSubmit = {this.onSubmitFrom}/>
+      //   <div className="BottomBar">
+      //     <div className="links">
+      //         <img src={github} width="25" alt=".github" style={{marginLeft: 10, marginRight:10}}/>
+      //         <img src={insta} width="25" alt=".instagram"style={{marginLeft: 10, marginRight:10}}/>
+      //         <img src={linkedin} width="25" alt=".linkedin" style={{marginLeft: 10, marginRight:10}}/>
+      //     </div>
+      //   </div>
+      // </div>
+      <LoginSignupForm/>
     );
   }
 }
