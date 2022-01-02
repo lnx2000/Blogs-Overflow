@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
-    username : {
-        type: String,
-        required : true,
+const postSchema = new Schema({ 
+    author: {
+        type: String, 
+        required : true, 
         trim: true
-    },   
+    },
     authorInfo : {
         type: String,
         required: true,

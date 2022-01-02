@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/add', function(req, res){
+  console.log("insode add");
   const newPost = new Post({author: req.body.author, 
                             authorInfo: req.body.authorInfo, 
                             title: req.body.title, 
@@ -18,7 +19,10 @@ router.post('/add', function(req, res){
   
   newPost.save()
   .then(_res => res.send(_res))
-  .catch(err => res.status(400).json(`Error: ${err}`));
+  .catch(err => {
+    console.log(err);
+    res.status(400).json(`Error: ${err}`)
+  });
 })
 router.put('/update', function(req, res){
     var id = req.query.id;

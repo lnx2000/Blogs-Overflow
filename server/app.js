@@ -26,9 +26,9 @@ app.get('/', verify, (req, res) =>{
   res.redirect("/posts");
 })
 
-app.use('/users/auth', verify, authRoutes);
+app.use('/users/auth', authRoutes);
 
-app.use('/posts', verify, postRoutes);
+app.use('/posts', postRoutes);
 
 app.listen(port, ()=>{
   console.log(`Server is running on port: ${port}`);

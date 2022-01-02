@@ -25,7 +25,7 @@ class SearchBar extends React.Component{
                     type="text"
                     ref={this.searchRef}
                     onInput={e => this.handleChange(e.target.value)}
-                    placeholder="Search for Author"
+                    placeholder="Search for anything..."
                 />
                 <button className="submit" type="submit">Search</button>
             </div> 

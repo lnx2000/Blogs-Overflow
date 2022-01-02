@@ -6,6 +6,10 @@ import upvote from "../../vecs/upvote.svg";
 import downvote from "../../vecs/downvote.svg";
 import upvote_filled from "../../vecs/upvote_filled.svg";
 import downvote_filled from "../../vecs/downvote_filled.svg";
+import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+  
 
 
 class BlogItem extends React.Component{
@@ -71,7 +75,28 @@ class BlogItem extends React.Component{
     componentWillMount(){
         this.callAPI();
     }
+    conditionalRendering = (prop) =>{
+        if(prop.truncatedDescription === this.props.description){
+            return <div></div>;
+        }
+        else {
+            return (
+            <Link to={`/post/${this.props.id}`}>
+                <p className="ReadMore">Read more</p>
+            </Link>
+            )
+        }
+    }
+    copy(){
+        console.log("eueueueu");
+        navigator.clipboard.writeText(`${window.location.origin}/post/${this.props.id}`);
+        toast("Copied link to the post");
+    }
     render(){
+        var truncatedDescription = "";
+        if(this.props.description.length >= 100)
+            truncatedDescription = this.props.description.substring(0, 150) + "...";
+        else truncatedDescription = this.props.description;
         return (
             <div className="main">
                 <div className="BlogItem">
@@ -82,11 +107,12 @@ class BlogItem extends React.Component{
                             <div className="clicks">
                                 <img src={this.state.upsrc} width="22" alt=".upvote" style={{marginLeft: 10, marginRight:5}} id="uvote" onClick={(e) => this.onImageClick(e)}/>
                                 <img src={this.state.downsrc} width="22" alt=".downvote" style={{marginLeft: 5, marginRight:5}} id="dvote" onClick={(e) => this.onImageClick(e)}/>
-                                <img src={copy_link} width="22" alt=".link" style={{marginLeft: 5, marginRight:10}}/>
+                                <img src={copy_link} width="22" alt=".link" style={{marginLeft: 5, marginRight:10}} id="link" onClick={(e) => this.copy()}/>
                             </div>
                         </div>
                         <p className="BlogTitle">{this.props.title}</p>
-                        <p className="BlogBody">{this.props.description}</p>
+                        <p className="BlogBody">{truncatedDescription}</p>
+                        <this.conditionalRendering truncatedDescription={truncatedDescription}/>
                         <div className="AuthorBox">
                             <div className="AuthorBoxSub">
                                 <p className="AuthorName">{this.props.author}</p>
