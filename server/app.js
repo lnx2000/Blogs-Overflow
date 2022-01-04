@@ -5,6 +5,7 @@ const postRoutes = require("./routes/posts")
 const authRoutes = require("./routes/auth/auth");
 const verify = require("./routes/auth/authVerify");
 const parser = require('body-parser');
+const { queryParser } = require('express-query-parser')
 const urlencodedParser = parser.urlencoded({extended : false});
 require('dotenv').config();
 
@@ -21,7 +22,14 @@ connection.once('open', ()=>{
 app.use(cors());
 app.use(parser.json());
 app.use(urlencodedParser)
-
+app.use(
+  queryParser({
+    parseNull: true,
+    parseUndefined: true,
+    parseBoolean: true,
+    parseNumber: false
+  })
+);
 app.get('/', verify, (req, res) =>{
   res.redirect("/posts");
 })

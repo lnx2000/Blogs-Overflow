@@ -9,13 +9,14 @@ import SearchBar from "./components/SearchBar/SearchBar"
 import InputForm  from './components/InputForm/InputForm';
 import NoData from "./components/NoData/NoData"
 import { ToastContainer, toast } from 'react-toastify';
-import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Link, Route, Routes, Navigate} from 'react-router-dom';
 
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = { posts:[], filtered_posts:[], verified : false};
+    
   }
   
 
@@ -127,6 +128,9 @@ class App extends React.Component {
       )
     }
   }
+  onChangePage = () =>{
+
+  }
   
   render(){
     return (
@@ -134,6 +138,7 @@ class App extends React.Component {
         <ToastContainer position="bottom-right"/>
         <Router>
           <Routes>
+            <Route exact path="/" element={ <Navigate to="/posts"/> }/>
             <Route exact path="/post/:_id" element={<Blog/>}/>
             <Route exact path="/posts" element={
               <div className="App">
