@@ -14,12 +14,37 @@ const fetchBlog = async (id) => {
     return data;
 }
 
+
 const fetchComments = async (id) => {
     const res = await fetch(`http://localhost:5000/comment?post_id=${id}`);
     const data = await res.json();
     return data;
 }
+const onSubmitFrom = (comment) => {
+    fetch('http://localhost:5000/comment/add/', {
+            method: 'POST',
+            body: JSON.stringify(comment),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            if (response.status >= 200 && response.status < 300) {
+                window.location.reload();
+            } else {
+                alert("Error occured :(");
+            }
+        });
+}
+const onSubmit = (e, id) =>{
+    console.log("Called this");
+    e.preventDefault();
 
+    const comment = {
+        post_id : id,
+        body : document.getElementById('commentText').value
+    }
+    onSubmitFrom(comment);
+}
 function Blog() {
     let params = useParams();
     const [blog, setBlog] = useState(null);
@@ -61,15 +86,14 @@ function Blog() {
                             </div>
                         </div>
                     </Card>
-                    <form id="contact" action="" method="post" onSubmit={(e) => this.onSubmit(e)}>
+                    <form id="contact" action="" method="post" onSubmit={(e) => onSubmit(e, blog._id)}>
                         <p style={{"font-size":"15px", marginTop:"-50px"}}><b>Post a comment</b></p>
                         <fieldset>
-                            {/* <input placeholder="Type something..." type="text" tabIndex="1" required autoFocus onChange={(e) => {this.onTextChange(e)}} id="author"/> */}
-                            <textarea name="Text1" cols="40" rows="5" placeholder='Type something...'></textarea>
+                            <textarea name="Text1" cols="40" rows="5" placeholder='Type something...' id='commentText'></textarea>
                         </fieldset>
                         
                         <fieldset>
-                            <button style={{width:"100px", float:"right", marginTop:"-10px"}} name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                            <button style={{width:"100px", float:"right", marginTop:"-10px"}} name="submit" type="submit" id="contact-submit" data-submit="...Sending" >Submit</button>
                         </fieldset>
                     </form>
 
