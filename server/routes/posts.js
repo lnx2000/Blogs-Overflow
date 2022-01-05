@@ -3,7 +3,6 @@ var router = express.Router();
 let Post = require('../models/post.model');
 
 router.get('/', function(req, res, next) {
-  console.log("getting blog");
   var id = req.query.id;
   if(id !== undefined){
     Post.find({_id:id})

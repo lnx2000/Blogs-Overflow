@@ -6,8 +6,8 @@ import upvote from "../../vecs/upvote.svg";
 import downvote from "../../vecs/downvote.svg";
 import upvote_filled from "../../vecs/upvote_filled.svg";
 import downvote_filled from "../../vecs/downvote_filled.svg";
-import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import {Link} from 'react-router-dom';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
   
 

@@ -8,8 +8,8 @@ import linkedin from "./vecs/linkedin.svg";
 import SearchBar from "./components/SearchBar/SearchBar"
 import InputForm  from './components/InputForm/InputForm';
 import NoData from "./components/NoData/NoData"
-import { ToastContainer, toast } from 'react-toastify';
-import {BrowserRouter as Router, Link, Route, Routes, Navigate} from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 
 
 class App extends React.Component {
