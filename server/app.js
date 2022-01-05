@@ -3,6 +3,7 @@ var cors = require('cors');
 const mongoose = require('mongoose');
 const postRoutes = require("./routes/posts")
 const authRoutes = require("./routes/auth/auth");
+const commentRoutes = require("./routes/comments");
 const verify = require("./routes/auth/authVerify");
 const parser = require('body-parser');
 const { queryParser } = require('express-query-parser')
@@ -37,6 +38,7 @@ app.get('/', verify, (req, res) =>{
 app.use('/users/auth', authRoutes);
 
 app.use('/posts', postRoutes);
+app.use('/comment', commentRoutes);
 
 app.listen(port, ()=>{
   console.log(`Server is running on port: ${port}`);
