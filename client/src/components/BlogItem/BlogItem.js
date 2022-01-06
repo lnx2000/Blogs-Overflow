@@ -76,16 +76,11 @@ class BlogItem extends React.Component{
         this.callAPI();
     }
     conditionalRendering = (prop) =>{
-        if(prop.truncatedDescription === this.props.description){
-            return <div></div>;
-        }
-        else {
-            return (
+        return (
             <Link to={`/post/${this.props.id}`}>
                 <p className="ReadMore">Read more</p>
             </Link>
             )
-        }
     }
     copy(){
         console.log("eueueueu");

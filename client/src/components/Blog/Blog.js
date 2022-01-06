@@ -89,7 +89,7 @@ function Blog() {
                     <form id="contact" action="" method="post" onSubmit={(e) => onSubmit(e, blog._id)}>
                         <p style={{"font-size":"15px", marginTop:"-50px"}}><b>Post a comment</b></p>
                         <fieldset>
-                            <textarea name="Text1" cols="40" rows="5" placeholder='Type something...' id='commentText'></textarea>
+                            <textarea className="TextArea" name="Text1" cols="40" rows="5" placeholder='Type something...' id='commentText'></textarea>
                         </fieldset>
                         
                         <fieldset>
