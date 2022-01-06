@@ -20,7 +20,8 @@ router.post('/add', function(req, res){
   const newPost = new Post({author: req.body.author, 
                             authorInfo: req.body.authorInfo, 
                             title: req.body.title, 
-                            description: req.body.description});
+                            description: req.body.description,
+                            shortDescription: req.body.shortDescription});
   
   newPost.save()
   .then(_res => res.send(_res))

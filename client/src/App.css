@@ -1,12 +1,13 @@
 .App {
   text-align: center;
   margin: 0px 0px 0px 0px;
+  width: 100%;
   background-color:#fff4ef;
 }
 
 .SplitScreen{
   content: "";
-  display: table;
+  display: inline-block;
   clear: both;
   width: 100%;
   padding: 0px 0px 0px 0px;

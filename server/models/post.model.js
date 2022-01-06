@@ -22,6 +22,10 @@ const postSchema = new Schema({
         type: String,
         required : true,
     },
+    shortDescription : {
+        type: String,
+        required : true,
+    },
     created:{
         type: Date,
         default: Date.now

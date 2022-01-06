@@ -3,6 +3,7 @@ var router = express.Router();
 let Comment = require('../models/comment.model');
 
 router.get('/', function(req, res, next) {
+    
     var id = req.query.post_id;
     Comment.find({postID:id}).sort({posted:-1})
     .then(comments => res.json(comments))

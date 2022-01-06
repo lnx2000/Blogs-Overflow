@@ -19,7 +19,6 @@ class App extends React.Component {
     
   }
   
-
   callAPI(){
     fetch("http://localhost:5000/posts")
     .then(res => res.json())
@@ -100,6 +99,7 @@ class App extends React.Component {
                    description={post.description} 
                    created={post.created} 
                    id={post._id} 
+                   shortDescription={post.shortDescription}
                    update={this.OnUpdatePost}
                    upvotecount={post.upvotes}
                    downvotecount={post.downvotes}/>
@@ -117,6 +117,7 @@ class App extends React.Component {
                   description={post.description} 
                   created={post.created} 
                   id={post._id} 
+                  shortDescription={post.shortDescription}
                   update={this.OnUpdatePost}
                   upvotecount={post.upvotes}
                   downvotecount={post.downvotes}/>

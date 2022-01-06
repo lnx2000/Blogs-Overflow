@@ -9,6 +9,7 @@ import downvote_filled from "../../vecs/downvote_filled.svg";
 import {Link} from 'react-router-dom';
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactMarkdown from 'react-markdown';
   
 
 
@@ -83,7 +84,6 @@ class BlogItem extends React.Component{
             )
     }
     copy(){
-        console.log("eueueueu");
         navigator.clipboard.writeText(`${window.location.origin}/post/${this.props.id}`);
         toast("Copied link to the post");
     }
@@ -106,7 +106,8 @@ class BlogItem extends React.Component{
                             </div>
                         </div>
                         <p className="BlogTitle">{this.props.title}</p>
-                        <p className="BlogBody">{truncatedDescription}</p>
+                        <p className="BlogBody">{this.props.shortDescription}</p>
+                        {/* <ReactMarkdown className="BlogBody">{this.props.description}</ReactMarkdown> */}
                         <this.conditionalRendering truncatedDescription={truncatedDescription}/>
                         <div className="AuthorBox">
                             <div className="AuthorBoxSub">
