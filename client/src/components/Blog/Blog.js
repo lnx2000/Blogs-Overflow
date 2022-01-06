@@ -208,3 +208,36 @@ function Blog() {
 }
 
 export default Blog;
+
+
+
+
+
+
+/*
+
+_italic_
+**bold**
+**_bold with italic_**
+# header 1
+## header 2
+### header 3
+#### header 4
+##### header 5
+###### header 6
+[Visit GitHub!](www.github.com)
+![](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg)  
+
+I read this interesting quote the other day:
+
+> "Her eyes had called him and his soul had leaped at the call. To live, to err, to fall, to triumph, to recreate life out of life!" 
+
+* Flour
+* Cheese
+* Tomatoes
+
+1. Cut the cheese
+2. Slice the tomatoes
+3. Rub the tomatoes in flour
+
+*/
