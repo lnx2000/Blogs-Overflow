@@ -6,8 +6,8 @@ A tech-blog web app with functionalities such as upvote, downvote and comments.
 - [x] Upvote/downvote
 - [x] Comments
 - [x] shareable link
-- [ ] Bold, italic, underline, etc. styling
+- [x] Bold, italic, underline, etc. styling
 - [ ] Login/Authnetication
-- [ ] MD support
-- [ ] Images support
+- [x] MD support
+- [ ] Images support(upload)
 - [ ] Hosting
